@@ -1,5 +1,5 @@
 'use strict';
-var runApplescript = require('run-applescript');
+var childProcess = require('child_process');
 
 module.exports = function (app, cb) {
 	if (process.platform !== 'darwin') {
@@ -10,16 +10,16 @@ module.exports = function (app, cb) {
 		throw new Error('Please supply an app name or bundle identifier');
 	}
 
-	var fn = app.indexOf('.') !== -1 ? 'absolutePathForAppBundleWithIdentifier' : 'fullPathForApplication';
-
-	var script = 'use framework "Foundation"\n(current application\'s NSWorkspace\'s sharedWorkspace()\'s ' + fn + ':"' + app + '") as text';
-
-	runApplescript(script, function (err, res) {
+	childProcess.execFile('./main', [app], {cwd: __dirname}, function (err, res) {
 		if (err) {
+			if (err.code === 2) {
+				err.message = 'Couldn\'t find the app';
+			}
+
 			cb(err);
 			return;
 		}
 
-		cb(null, res);
+		cb(null, res.trim());
 	});
 };

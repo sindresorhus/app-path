@@ -13,10 +13,12 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "compile": "swiftc main.swift -emit-executable -sdk $(xcrun --show-sdk-path --sdk macosx)"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "main"
   ],
   "keywords": [
     "osx",
@@ -25,9 +27,6 @@
     "application",
     "path"
   ],
-  "dependencies": {
-    "run-applescript": "^1.0.1"
-  },
   "devDependencies": {
     "ava": "0.0.4"
   }
