@@ -1,16 +1,18 @@
 'use strict';
 var runApplescript = require('run-applescript');
 
-module.exports = function (appName, cb) {
+module.exports = function (app, cb) {
 	if (process.platform !== 'darwin') {
 		throw new Error('OS X only');
 	}
 
-	if (typeof appName !== 'string') {
-		throw new Error('Please supply an app name');
+	if (typeof app !== 'string') {
+		throw new Error('Please supply an app name or bundle identifier');
 	}
 
-	var script = 'tell application "Finder" to POSIX path of (path to application "' + appName + '")';
+	var fn = app.indexOf('.') !== -1 ? 'absolutePathForAppBundleWithIdentifier' : 'fullPathForApplication';
+
+	var script = 'use framework "Foundation"\n(current application\'s NSWorkspace\'s sharedWorkspace()\'s ' + fn + ':"' + app + '") as text';
 
 	runApplescript(script, function (err, res) {
 		if (err) {

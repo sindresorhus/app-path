@@ -17,7 +17,12 @@ var appPath = require('app-path');
 
 appPath('Safari', function (err, path) {
 	console.log(path);
-	//=> '/Applications/Safari.app/'
+	//=> '/Applications/Safari.app'
+});
+
+appPath('com.apple.Safari', function (err, path) {
+	console.log(path);
+	//=> '/Applications/Safari.app'
 });
 ```
 
