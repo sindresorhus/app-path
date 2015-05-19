@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "node test.js",
-    "compile": "swiftc main.swift -emit-executable -sdk $(xcrun --show-sdk-path --sdk macosx)"
+    "compile": "clang main.m -fmodules -mmacosx-version-min=10.6 -o main"
   },
   "files": [
     "index.js",
