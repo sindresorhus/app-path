@@ -3,7 +3,7 @@
 int main() {
 	@autoreleasepool {
 		NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
-		NSArray *args = [[NSProcessInfo processInfo] arguments];
+		NSArray *args = [NSProcessInfo processInfo].arguments;
 
 		if (args.count == 1) {
 			return 1;
@@ -22,7 +22,7 @@ int main() {
 			return 2;
 		}
 
-		puts([ret UTF8String]);
+		puts(ret.UTF8String);
 	}
 
 	return 0;

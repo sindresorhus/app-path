@@ -25,7 +25,11 @@
     "applescript",
     "app",
     "application",
-    "path"
+    "path",
+    "dir",
+    "directory",
+    "bundle",
+    "location"
   ],
   "devDependencies": {
     "ava": "0.0.4"
