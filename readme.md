@@ -27,6 +27,11 @@ appPath('com.apple.Safari', function (err, path) {
 ```
 
 
+## Related
+
+- [app-path-cli](https://github.com/sindresorhus/app-path-cli) - CLI for this module
+
+
 ## License
 
 MIT © [Sindre Sorhus](http://sindresorhus.com)
