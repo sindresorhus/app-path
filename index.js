@@ -1,25 +1,22 @@
 'use strict';
-var childProcess = require('child_process');
+const execa = require('execa');
 
-module.exports = function (app, cb) {
+module.exports = app => {
 	if (process.platform !== 'darwin') {
-		throw new Error('OS X only');
+		return Promise.reject(new Error('OS X only'));
 	}
 
 	if (typeof app !== 'string') {
-		throw new Error('Please supply an app name or bundle identifier');
+		return Promise.reject(new Error('Please supply an app name or bundle identifier'));
 	}
 
-	childProcess.execFile('./main', [app], {cwd: __dirname}, function (err, res) {
-		if (err) {
+	return execa('./main', [app], {cwd: __dirname})
+		.then(data => data.stdout)
+		.catch(err => {
 			if (err.code === 2) {
 				err.message = 'Couldn\'t find the app';
 			}
 
-			cb(err);
-			return;
-		}
-
-		cb(null, res.trim());
-	});
+			throw err;
+		});
 };

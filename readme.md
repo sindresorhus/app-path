@@ -13,14 +13,14 @@ $ npm install --save app-path
 ## Usage
 
 ```js
-var appPath = require('app-path');
+const appPath = require('app-path');
 
-appPath('Safari', function (err, path) {
+appPath('Safari').then(path => {
 	console.log(path);
 	//=> '/Applications/Safari.app'
 });
 
-appPath('com.apple.Safari', function (err, path) {
+appPath('com.apple.Safari').then(path => {
 	console.log(path);
 	//=> '/Applications/Safari.app'
 });
@@ -34,4 +34,4 @@ appPath('com.apple.Safari', function (err, path) {
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)

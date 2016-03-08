@@ -10,10 +10,10 @@
     "url": "sindresorhus.com"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
-    "test": "node test.js",
+    "test": "xo && ava",
     "compile": "clang main.m -fmodules -mmacosx-version-min=10.6 -o main"
   },
   "files": [
@@ -31,7 +31,11 @@
     "bundle",
     "location"
   ],
+  "dependencies": {
+    "execa": "^0.2.2"
+  },
   "devDependencies": {
-    "ava": "0.0.4"
+    "ava": "*",
+    "xo": "*"
   }
 }

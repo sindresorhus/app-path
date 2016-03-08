@@ -1,21 +1,10 @@
-'use strict';
-var test = require('ava');
-var appPath = require('./');
+import test from 'ava';
+import m from './';
 
-test('name', function (t) {
-	t.plan(2);
-
-	appPath('Safari', function (err, path) {
-		t.assert(!err, err);
-		t.assert(path === '/Applications/Safari.app', path);
-	});
+test.only('name', async t => {
+	t.is(await m('Safari'), '/Applications/Safari.app');
 });
 
-test('bundle id', function (t) {
-	t.plan(2);
-
-	appPath('com.apple.Safari', function (err, path) {
-		t.assert(!err, err);
-		t.assert(path === '/Applications/Safari.app', path);
-	});
+test('bundle id', async t => {
+	t.is(await m('com.apple.Safari'), '/Applications/Safari.app');
 });
