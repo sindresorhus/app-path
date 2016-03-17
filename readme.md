@@ -24,7 +24,11 @@ appPath('com.apple.Safari').then(path => {
 	console.log(path);
 	//=> '/Applications/Safari.app'
 });
+
+console.log(appPath('Safari'));
+//=> '/Applications/Safari.app'
 ```
+
 
 
 ## Related
