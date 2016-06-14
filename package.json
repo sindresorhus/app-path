@@ -1,7 +1,7 @@
 {
   "name": "app-path",
   "version": "2.1.0",
-  "description": "Get the path to an app (OS X)",
+  "description": "Get the path to an app (macOS)",
   "license": "MIT",
   "repository": "sindresorhus/app-path",
   "author": {
@@ -21,6 +21,7 @@
     "main"
   ],
   "keywords": [
+    "macos",
     "osx",
     "applescript",
     "app",

@@ -12,7 +12,7 @@ function tweakErr(err) {
 
 module.exports = app => {
 	if (process.platform !== 'darwin') {
-		return Promise.reject(new Error('OS X only'));
+		return Promise.reject(new Error('macOS only'));
 	}
 
 	if (typeof app !== 'string') {
@@ -26,7 +26,7 @@ module.exports = app => {
 
 module.exports.sync = app => {
 	if (process.platform !== 'darwin') {
-		throw new Error('OS X only');
+		throw new Error('macOS only');
 	}
 
 	if (typeof app !== 'string') {
