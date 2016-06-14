@@ -1,5 +1,4 @@
 'use strict';
-const childProcess = require('child_process');
 const execa = require('execa');
 
 function tweakErr(err) {
@@ -19,9 +18,7 @@ module.exports = app => {
 		return Promise.reject(new Error('Please supply an app name or bundle identifier'));
 	}
 
-	return execa('./main', [app], {cwd: __dirname})
-		.then(data => data.stdout)
-		.catch(tweakErr);
+	return execa.stdout('./main', [app], {cwd: __dirname}).catch(tweakErr);
 };
 
 module.exports.sync = app => {
@@ -36,11 +33,7 @@ module.exports.sync = app => {
 	let stdout = '';
 
 	try {
-		// TODO: use `execa.sync()` when it's implemented there
-		stdout = childProcess.execFileSync('./main', [app], {
-			cwd: __dirname,
-			encoding: 'utf8'
-		}).trim();
+		stdout = execa.sync('./main', [app], {cwd: __dirname}).stdout;
 	} catch (err) {
 		tweakErr(err);
 	}
