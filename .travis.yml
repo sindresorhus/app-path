@@ -1,5 +1,17 @@
-os: osx
 language: node_js
+os:
+  - osx
 node_js:
-  - '6'
-  - '4'
+  - "7.0"
+  - "6.0"
+  - "4.0"
+
+notifications:
+  email: false
+
+git:
+  depth: 10
+
+branches:
+  only:
+    - master
