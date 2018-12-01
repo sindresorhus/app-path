@@ -1,40 +1,46 @@
 {
-	"name": "app-path",
-	"version": "3.0.0",
-	"description": "Get the path to an app (macOS)",
-	"license": "MIT",
-	"repository": "sindresorhus/app-path",
-	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
-	},
-	"engines": {
-		"node": ">=8"
-	},
-	"scripts": {
-		"test": "xo && ava",
-		"compile": "clang main.m -fmodules -mmacosx-version-min=10.6 -o main"
-	},
-	"files": [
-		"index.js",
-		"main"
-	],
-	"keywords": [
-		"macos",
-		"applescript",
-		"app",
-		"application",
-		"path",
-		"directory",
-		"bundle",
-		"location"
-	],
-	"dependencies": {
-		"execa": "^1.0.0"
-	},
-	"devDependencies": {
-		"ava": "^0.25.0",
-		"xo": "^0.23.0"
-	}
+    "name": "app-path",
+    "version": "3.0.0",
+    "description": "Get the path to an app (macOS)",
+    "license": "MIT",
+    "repository": "sindresorhus/app-path",
+    "author": {
+        "name": "Sindre Sorhus",
+        "email": "sindresorhus@gmail.com",
+        "url": "sindresorhus.com"
+    },
+    "engines": {
+        "node": ">=8"
+    },
+    "scripts": {
+        "test": "xo && ava",
+        "compile": "clang main.m -fmodules -mmacosx-version-min=10.6 -o main"
+    },
+    "files": [
+        "index.js",
+        "main"
+    ],
+    "keywords": [
+        "macos",
+        "applescript",
+        "app",
+        "application",
+        "path",
+        "directory",
+        "bundle",
+        "location"
+    ],
+    "dependencies": {
+        "execa": "^1.0.0"
+    },
+    "devDependencies": {
+        "ava": "^0.25.0",
+        "husky": "^1.2.0",
+        "prettier": "1.15.3",
+        "pretty-quick": "^1.8.0",
+        "xo": "^0.23.0"
+    },
+    "xo": {
+        "prettier": true
+    }
 }
