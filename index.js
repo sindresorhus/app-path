@@ -1,24 +1,30 @@
 'use strict';
 const execa = require('execa');
 
-function tweakErr(err) {
-	if (err.code === 2) {
-		err.message = 'Couldn\'t find the app';
+const tweakError = error => {
+	if (error.code === 2) {
+		error.message = 'Couldn\'t find the app';
 	}
 
-	throw err;
-}
+	throw error;
+};
 
-module.exports = app => {
+module.exports = async app => {
 	if (process.platform !== 'darwin') {
-		return Promise.reject(new Error('macOS only'));
+		throw new Error('macOS only');
 	}
 
 	if (typeof app !== 'string') {
-		return Promise.reject(new Error('Please supply an app name or bundle identifier'));
+		throw new TypeError('Please supply an app name or bundle identifier');
 	}
 
-	return execa.stdout('./main', [app], {cwd: __dirname}).catch(tweakErr);
+	try {
+		return execa.stdout('./main', [app], {cwd: __dirname});
+	} catch (error) {
+		tweakError(error);
+	}
+
+	return execa.stdout('./main', [app], {cwd: __dirname}).catch(tweakError);
 };
 
 module.exports.sync = app => {
@@ -27,16 +33,12 @@ module.exports.sync = app => {
 	}
 
 	if (typeof app !== 'string') {
-		throw new Error('Please supply an app name or bundle identifier');
+		throw new TypeError('Please supply an app name or bundle identifier');
 	}
-
-	let stdout = '';
 
 	try {
-		stdout = execa.sync('./main', [app], {cwd: __dirname}).stdout;
-	} catch (err) {
-		tweakErr(err);
+		return execa.sync('./main', [app], {cwd: __dirname}).stdout;
+	} catch (error) {
+		tweakError(error);
 	}
-
-	return stdout;
 };

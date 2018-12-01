@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save app-path
+$ npm install app-path
 ```
 
 
@@ -15,15 +15,13 @@ $ npm install --save app-path
 ```js
 const appPath = require('app-path');
 
-appPath('Safari').then(path => {
-	console.log(path);
+(async () => {
+	console.log(await appPath('Safari'));
 	//=> '/Applications/Safari.app'
-});
 
-appPath('com.apple.Safari').then(path => {
-	console.log(path);
+	console.log(await appPath('com.apple.Safari'));
 	//=> '/Applications/Safari.app'
-});
+})();
 
 console.log(appPath.sync('Safari'));
 //=> '/Applications/Safari.app'
