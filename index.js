@@ -6,26 +6,27 @@ const tweakError = error => {
 		error.message = 'Couldn\'t find the app';
 	}
 
-	throw error;
+	return error;
 };
 
-module.exports = async app => {
+const appPath = async appName => {
 	if (process.platform !== 'darwin') {
 		throw new Error('macOS only');
 	}
 
-	if (typeof app !== 'string') {
+	if (typeof appName !== 'string') {
 		throw new TypeError('Please supply an app name or bundle identifier');
 	}
 
 	try {
-		return execa.stdout('./main', [app], {cwd: __dirname});
+		return await execa.stdout('./main', [appName], {cwd: __dirname});
 	} catch (error) {
-		tweakError(error);
+		throw tweakError(error);
 	}
-
-	return execa.stdout('./main', [app], {cwd: __dirname}).catch(tweakError);
 };
+
+module.exports = appPath;
+module.exports.default = appPath;
 
 module.exports.sync = app => {
 	if (process.platform !== 'darwin') {
@@ -39,6 +40,6 @@ module.exports.sync = app => {
 	try {
 		return execa.sync('./main', [app], {cwd: __dirname}).stdout;
 	} catch (error) {
-		tweakError(error);
+		throw tweakError(error);
 	}
 };

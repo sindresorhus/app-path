@@ -27,7 +27,21 @@ console.log(appPath.sync('Safari'));
 //=> '/Applications/Safari.app'
 ```
 
+## API
 
+### appPath(appName)
+
+Returns a `Promise<string>` with the path to the app specified in `appName`. Rejects when run on any other OS than macOS.
+
+### appPath.sync(appName)
+
+Returns the path to the app specified in `appName`. Throws when run on any other OS than macOS.
+
+#### appName
+
+Type: `string`
+
+An app name or bundle identifier.
 
 ## Related
 
