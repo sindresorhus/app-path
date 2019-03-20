@@ -43,6 +43,7 @@ Type: `string`
 
 An app name or bundle identifier.
 
+
 ## Related
 
 - [app-path-cli](https://github.com/sindresorhus/app-path-cli) - CLI for this module

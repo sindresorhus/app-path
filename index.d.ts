@@ -1,9 +1,9 @@
 declare const appPath: {
 	/**
-	Get the path to an app _(macOS)_.
+	Get the path to an app on macOS.
 
 	@param appName - An app name or bundle identifier.
-	@returns The path to the app specified in `appName`. Throws when run on any other OS than macOS.
+	@returns The path to the app specified in `appName`. Rejects when run on any other OS than macOS.
 
 	@example
 	```
@@ -21,7 +21,7 @@ declare const appPath: {
 	(appName: string): Promise<string>;
 
 	/**
-	Synchronously get the path to an app _(macOS)_.
+	Synchronously get the path to an app on macOS.
 
 	@param appName - An app name or bundle identifier.
 	@returns The path to the app specified in `appName`. Throws when run on any other OS than macOS.
@@ -33,7 +33,7 @@ declare const appPath: {
 	console.log(appPath.sync('Safari'));
 	//=> '/Applications/Safari.app'
 
-	console.log(await appPath.sync('com.apple.Safari'));
+	console.log(appPath.sync('com.apple.Safari'));
 	//=> '/Applications/Safari.app'
 	```
 	*/

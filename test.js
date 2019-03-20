@@ -19,5 +19,8 @@ test('sync - bundle id', t => {
 
 test('throws when app couldn\'t be found', async t => {
 	await t.throwsAsync(appPath('fooAppBarBaz'), {message: 'Couldn\'t find the app'});
-	t.throws(() => appPath.sync('fooAppBarBaz'), {message: 'Couldn\'t find the app'});
+
+	t.throws(() => {
+		appPath.sync('fooAppBarBaz');
+	}, {message: 'Couldn\'t find the app'});
 });
