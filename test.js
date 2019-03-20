@@ -16,3 +16,8 @@ test('sync - name', t => {
 test('sync - bundle id', t => {
 	t.is(appPath.sync('com.apple.Safari'), '/Applications/Safari.app');
 });
+
+test('throws when app couldn\'t be found', async t => {
+	await t.throwsAsync(appPath('fooAppBarBaz'), {message: 'Couldn\'t find the app'});
+	t.throws(() => appPath.sync('fooAppBarBaz'), {message: 'Couldn\'t find the app'});
+});
