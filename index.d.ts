@@ -38,6 +38,9 @@ declare const appPath: {
 	```
 	*/
 	sync(appName: string): string;
+
+	// TODO: remove this in the next major version
+	default: typeof appPath;
 }
 
-export default appPath;
+export = appPath;
