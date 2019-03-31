@@ -26,6 +26,7 @@ const appPath = async appName => {
 };
 
 module.exports = appPath;
+// TODO: remove this in the next major version
 module.exports.default = appPath;
 
 module.exports.sync = app => {

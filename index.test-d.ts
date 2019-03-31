@@ -1,5 +1,5 @@
-import {expectType} from 'tsd-check';
-import appPath from '.';
+import {expectType} from 'tsd';
+import appPath = require('.');
 
 expectType<Promise<string>>(appPath('Safari'));
 expectType<string>(appPath.sync('Safari'));
