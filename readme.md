@@ -1,4 +1,4 @@
-# app-path [![Build Status](https://travis-ci.org/sindresorhus/app-path.svg?branch=master)](https://travis-ci.org/sindresorhus/app-path)
+# app-path
 
 > Get the path to an app *(macOS)*
 
