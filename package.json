@@ -4,10 +4,11 @@
 	"description": "Get the path to an app (macOS)",
 	"license": "MIT",
 	"repository": "sindresorhus/app-path",
+	"funding": "https://github.com/sponsors/sindresorhus",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"url": "https://sindresorhus.com"
 	},
 	"engines": {
 		"node": ">=8"

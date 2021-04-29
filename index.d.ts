@@ -3,7 +3,7 @@ declare const appPath: {
 	Get the path to an app on macOS.
 
 	@param appName - An app name or bundle identifier.
-	@returns The path to the app specified in `appName`. Rejects when run on any other OS than macOS.
+	@returns The path to the app specified in `appName`. Rejects when run on any other operating system than macOS.
 
 	@example
 	```
@@ -24,7 +24,7 @@ declare const appPath: {
 	Synchronously get the path to an app on macOS.
 
 	@param appName - An app name or bundle identifier.
-	@returns The path to the app specified in `appName`. Throws when run on any other OS than macOS.
+	@returns The path to the app specified in `appName`. Throws when run on any other operating system than macOS.
 
 	@example
 	```
@@ -41,6 +41,6 @@ declare const appPath: {
 
 	// TODO: remove this in the next major version
 	default: typeof appPath;
-}
+};
 
 export = appPath;

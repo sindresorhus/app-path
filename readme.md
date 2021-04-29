@@ -2,13 +2,11 @@
 
 > Get the path to an app *(macOS)*
 
-
 ## Install
 
 ```
 $ npm install app-path
 ```
-
 
 ## Usage
 
@@ -31,11 +29,11 @@ console.log(appPath.sync('Safari'));
 
 ### appPath(appName)
 
-Returns a `Promise<string>` with the path to the app specified in `appName`. Rejects when run on any other OS than macOS.
+Returns a `Promise<string>` with the path to the app specified in `appName`. Rejects when run on any other operating system than macOS.
 
 ### appPath.sync(appName)
 
-Returns the path to the app specified in `appName`. Throws when run on any other OS than macOS.
+Returns the path to the app specified in `appName`. Throws when run on any other operating system than macOS.
 
 #### appName
 
@@ -43,12 +41,6 @@ Type: `string`
 
 An app name or bundle identifier.
 
-
 ## Related
 
 - [app-path-cli](https://github.com/sindresorhus/app-path-cli) - CLI for this module
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
