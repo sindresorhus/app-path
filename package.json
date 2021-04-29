@@ -14,7 +14,9 @@
 	},
 	"scripts": {
 		"test": "xo && ava && tsd",
-		"compile": "clang main.m -fmodules -mmacosx-version-min=10.6 -o main"
+		"compile-x64": "clang main.m -fmodules -mmacosx-version-min=10.6 -target x86_64-apple-darwin -o main-x64",
+		"compile-arm64": "clang main.m -fmodules -mmacosx-version-min=11.0 -target arm64-apple-darwin -o main-arm64",
+		"compile": "npm run compile-x64 && npm run compile-arm64 && lipo -create -output main main-x64 main-arm64 && rm main-x64 main-arm64"
 	},
 	"files": [
 		"index.js",
