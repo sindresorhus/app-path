@@ -1,15 +1,18 @@
-'use strict';
-const execa = require('execa');
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+import execa from 'execa';
 
-const tweakError = error => {
-	if (error.code === 2) {
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const improveError = error => {
+	if (error.exitCode === 2) {
 		error.message = 'Couldn\'t find the app';
 	}
 
 	return error;
 };
 
-const appPath = async appName => {
+export default async function appPath(appName) {
 	if (process.platform !== 'darwin') {
 		throw new Error('macOS only');
 	}
@@ -19,28 +22,25 @@ const appPath = async appName => {
 	}
 
 	try {
-		return await execa.stdout('./main', [appName], {cwd: __dirname});
+		const {stdout} = await execa('./main', [appName], {cwd: dirname});
+		return stdout;
 	} catch (error) {
-		throw tweakError(error);
+		throw improveError(error);
 	}
-};
+}
 
-module.exports = appPath;
-// TODO: remove this in the next major version
-module.exports.default = appPath;
-
-module.exports.sync = app => {
+appPath.sync = appName => {
 	if (process.platform !== 'darwin') {
 		throw new Error('macOS only');
 	}
 
-	if (typeof app !== 'string') {
+	if (typeof appName !== 'string') {
 		throw new TypeError('Please supply an app name or bundle identifier');
 	}
 
 	try {
-		return execa.sync('./main', [app], {cwd: __dirname}).stdout;
+		return execa.sync('./main', [appName], {cwd: dirname}).stdout;
 	} catch (error) {
-		throw tweakError(error);
+		throw improveError(error);
 	}
 };

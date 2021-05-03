@@ -11,15 +11,13 @@ $ npm install app-path
 ## Usage
 
 ```js
-const appPath = require('app-path');
+import appPath from 'app-path';
 
-(async () => {
-	console.log(await appPath('Safari'));
-	//=> '/Applications/Safari.app'
+console.log(await appPath('Safari'));
+//=> '/Applications/Safari.app'
 
-	console.log(await appPath('com.apple.Safari'));
-	//=> '/Applications/Safari.app'
-})();
+console.log(await appPath('com.apple.Safari'));
+//=> '/Applications/Safari.app'
 
 console.log(appPath.sync('Safari'));
 //=> '/Applications/Safari.app'

@@ -1,5 +1,5 @@
 import test from 'ava';
-import appPath from '.';
+import appPath from './index.js';
 
 test('async - name', async t => {
 	t.is(await appPath('Safari'), '/Applications/Safari.app');
@@ -22,5 +22,7 @@ test('throws when app couldn\'t be found', async t => {
 
 	t.throws(() => {
 		appPath.sync('fooAppBarBaz');
-	}, {message: 'Couldn\'t find the app'});
+	}, {
+		message: 'Couldn\'t find the app'
+	});
 });
