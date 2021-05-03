@@ -1,6 +1,6 @@
 {
 	"name": "app-path",
-	"version": "3.3.0",
+	"version": "4.0.0",
 	"description": "Get the path to an app (macOS)",
 	"license": "MIT",
 	"repository": "sindresorhus/app-path",
